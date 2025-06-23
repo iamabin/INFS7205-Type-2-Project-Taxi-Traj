@@ -61,7 +61,7 @@ pip install Flask Flask-Cors psycopg2-binary
 
 - **Database Schema**: 
 
-  ​	![image-20250509155639413](/Users/chiwang/Library/Application Support/typora-user-images/image-20250509155639413.png)
+  ​	![GitHub Logo](https://raw.githubusercontent.com/iamabin/TrajVis/main/assets/schema.png)
 
 - **How to Load Data**:
 
@@ -134,6 +134,8 @@ with open("your dataset location", "r") as f:
 ### Query 1: (Task Description)
 
 - Taxi Trajectories by Start Location and Time Range: It enables traffic authorities to identify commonly used routes during peak hours. Based on these historical data they can proactively anticipate potential congestion and implement control measures in advance.
+- ![q1](https://raw.githubusercontent.com/iamabin/TrajVis/main/assets/q1.png)
+- 
 
 ### Query 1: (SQL Query)
 
@@ -183,6 +185,7 @@ cursor.execute(query, (start_time, end_time, lng, lat, k))
 ### **Query 2: (Task Description)**
 
 - High-Frequency Taxi Pick-up Locations: The results of this query can help to uncover potential areas with dense passenger demand, enabling the authorities to optimize existing taxi stand or establish new pick-up points, thereby reducing the risk of local congestion caused by instantaneous high peak traffic.
+- ![GitHub Logo](https://raw.githubusercontent.com/iamabin/TrajVis/main/assets/q2.png)
 
 ### Query 2: (SQL Query)
 
@@ -230,6 +233,7 @@ cursor.execute(query, (day_type, start_time, end_time, k))
 ### **Query 3: (Task Description)**
 
 - Taxi trajectories between two areas: By visualize the route distribution of these trajectories, the commonly congested segments can be identified, which provides a basis for urban road optimization and traffic flow adjustment.
+- ![GitHub Logo](https://raw.githubusercontent.com/iamabin/TrajVis/main/assets/q3.png)
 
 ### Query 3: (SQL Query)
 
