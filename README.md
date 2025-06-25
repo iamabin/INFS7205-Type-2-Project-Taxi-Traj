@@ -2,9 +2,9 @@
 
 ### Motivation
 
-This app is designed as an assist tool to solve the problem of urban traffic congestion. By visualizing historical taxi trajectory data, authorities can identify high-frequency congestion sections and hot spots, so as to optimise traffic management and planning decisions.
+This application is designed as a decision-support tool to address urban traffic congestion. By visualizing historical taxi trajectory data, authorities can identify high-frequency congestion sections and hot spots, so as to optimise traffic management and planning decisions.
 
-The application can query historical trajectories in real time and conduct spatial analysis, providing a basis for urban road optimization, taxi scheduling, and setting up new taxi stand.
+The app allows real-time querying of historical trajectories and supports spatial analysis, providing a solid foundation for urban road optimization, taxi dispatching, and the planning of new taxi stands.
 
 ### Web Application Functions
 
@@ -13,12 +13,10 @@ The application can query historical trajectories in real time and conduct spati
   1) Taxi Trajectories by Start Location and Time Range:
      This query retrieves all trajectories that originate from a specified area within a given time range. 
 
-  1. High-Frequency Taxi Pick-up Locations: 
-
+  2) High-Frequency Taxi Pick-up Locations: 
      This query aggregates the spatial distribution of trip origins to identify the most frequent pick-up locations during a specified time interval. To avoid bias from fixed taxi stands, all trips originating from a designated taxi stand were excluded.
 
-  1. Taxi trajectories between two areas:
-
+  3) Taxi trajectories between two areas:
      The query retrieves a complete set of trajectories that simultaneously meet both the criteria for a specified start and end area within a certain time frame. 
 
 - Visualize  trajactories to the Leaflet map.
@@ -35,14 +33,14 @@ The application can query historical trajectories in real time and conduct spati
 
 - Backend: (Python with Flask)
 - Frontend: (React, HTML/Bootstrap/TypeScript)
-- Database: (e.g., PostgreSQL with PostGIS)
+- Database: (PostgreSQL with PostGIS)
 
 ### Packages & Dependencies
 
 - `psycopg2`: Used in the backend (Python) to establish a connection to the PostgreSQL database and execute SQL queries.
 - `Axios:`: To send queries to the backend API endpoints.
-- `leaflet`: To display map.
-- `bootstrap`: Css Lib
+- `leaflet`: To rendering map at frontend.
+- `bootstrap`: CSS Lib
 
 ---
 
@@ -51,7 +49,7 @@ The application can query historical trajectories in real time and conduct spati
 ### Environment Setup
 
 ```bash
-# under frontend folder run
+# under frontend directory run
 npm install --legacy-peer-deps
 # backend dependency
 pip install Flask Flask-Cors psycopg2-binary
@@ -76,14 +74,14 @@ pip install Flask Flask-Cors psycopg2-binary
 ```python
 # connection
 conn = psycopg2.connect(
-    dbname="your database name",
-    user="your username",
-    password="your password",
+    dbname="your_database_name",
+    user="your_username",
+    password="your_password",
     host="localhost",
     port="5432"
 )
 # data location 
-with open("your dataset location", "r") as f:
+with open("path_of_dataset, "r") as f:
 
 ```
 
@@ -100,28 +98,28 @@ with open("your dataset location", "r") as f:
 ### Frontend
 
 - Location of frontend code:  `frontend/`
-- `MapView.tsx`: interactive iput and render trajectories.
+- `MapView.tsx`: Interactive input handler and trajectory renderer.
 - `QueryForm.tsx`,  `QueryForm2.tsx`,  `QueryForm3.tsx` : The form component of the query function.
 - `Query1Page.tsx`,  `Query2Page.tsx`,  `Query3Page.tsx` : Three query pages.
 
 ### Backend
 
 - Location of backend code: e.g., `backend/`
-- `query1/`: Retrieves taxi trajectories that start within 500 meters of a given location and fall within a specified date and time range. 
-- `query2/`: Aggregates high-frequency taxi pick-up locations for trips that occurred during specific daytype and time intervals.
-- `query3/`: Retrieves all trajectories that start and end within 500 meters of two user-defined locations, during specific daytype and time frame. 
+- `query1/`: Retrieves taxi trajectories that originate within 500 meters of a user-defined location and occur within a specified date and time range. 
+- `query2/`: Aggregates high-frequency taxi pick-up locations for trips that occurred during specified day types and time intervals.
+- `query3/`: Retrieves all taxi trajectories that both start and end within 500 meters of two user-defined locations, and occur during specified day types and time frames.
 
 ### Database Connection
 
-- Location of the code that connects the backend to the database `backend/db_config.py`
+- Location of the code that connects the backend to the database: `backend/db_config.py`
 
 - Example of how the application connects to the database:
 
   ```bash
     conn = psycopg2.connect(
-        dbname="your database name",
-        user="your username",
-        password="your password",
+        dbname="your_database_name",
+        user="your_username",
+        password="your_password",
         host="localhost",
         port="5432"
     )
@@ -135,8 +133,7 @@ with open("your dataset location", "r") as f:
 
 - Taxi Trajectories by Start Location and Time Range: It enables traffic authorities to identify commonly used routes during peak hours. Based on these historical data they can proactively anticipate potential congestion and implement control measures in advance.
 - ![q1](https://raw.githubusercontent.com/iamabin/TrajVis/main/assets/q1.png)
-- 
-
+  
 ### Query 1: (SQL Query)
 
 ```sql
@@ -172,7 +169,7 @@ cursor.execute(query, (start_time, end_time, lng, lat, k))
 
 - Invalid timeframe input
 
-  A pop up window will warning user: "Please enter valid timeframe (0-23) and start hours must be less than end hours."
+  A pop up window will warning user: "Please enter a valid timeframe (0–23), and ensure the start hour is earlier than the end hour."
 
 - Invalid number of  trajectories to visualize
 
@@ -220,7 +217,7 @@ cursor.execute(query, (day_type, start_time, end_time, k))
 
 - Invalid timeframe input
 
-  A pop up window will warning user: "Please enter valid timeframe (0-23) and start hours must be less than end hours."
+  A pop up window will warning user: "Please enter a valid timeframe (0–23), and ensure the start hour is earlier than the end hour."
 
 - Invalid number of  hotspots to visualize
 
@@ -228,7 +225,7 @@ cursor.execute(query, (day_type, start_time, end_time, k))
 
 - Invalid day type input
 
-  User can only select one of following day type: weekdays, weekends, all days.
+  User can only select one of following day type: weekdays, weekends and all days.
 
 ### **Query 3: (Task Description)**
 
@@ -261,9 +258,9 @@ cur.execute(data_query, (lng1, lat1, lng2, lat2, day_type, start_time, end_time,
 
 ​		`lat1`: latitude of the start area
 
-​		`	lng2`: longitude of the end area
+​		`lng2`: longitude of the end area
 
-​		`	lat2`: latitude of the end area
+​		`lat2`: latitude of the end area
 
 ​		`day_type`:  used for determining daytype.
 
@@ -277,7 +274,7 @@ cur.execute(data_query, (lng1, lat1, lng2, lat2, day_type, start_time, end_time,
 
 - Invalid timeframe input
 
-  A pop up window will warning user: "Please enter valid timeframe (0-23) and start hours must be less than end hours."
+  A pop up window will warning user: "Please enter a valid timeframe (0–23), and ensure the start hour is earlier than the end hour."
 
 - Invalid number of  trajectories to visualize
 
@@ -289,7 +286,7 @@ cur.execute(data_query, (lng1, lat1, lng2, lat2, day_type, start_time, end_time,
 
 - Invalid day type input
 
-  User can only select one of following day type: weekdays, weekends, all days.
+  User can only select one of following day type: weekdays, weekends and all days.
 
 ---
 
