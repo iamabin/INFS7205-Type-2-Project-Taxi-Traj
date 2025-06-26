@@ -40,7 +40,7 @@ The app allows real-time querying of historical trajectories and supports spatia
 - `psycopg2`: Used in the backend (Python) to establish a connection to the PostgreSQL database and execute SQL queries.
 - `Axios:`: To send queries to the backend API endpoints.
 - `leaflet`: To rendering map at frontend.
-- `bootstrap`: CSS framework
+- `bootstrap`: CSS framework.
 
 ---
 
