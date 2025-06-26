@@ -69,21 +69,21 @@ pip install Flask Flask-Cors psycopg2-binary
   python load.py
   ```
 
-​		Before performing above code block, the connection details (Lines 7:13) 		and dataset location (Line 38) in load.py need to be modified. For example:
-
-```python
-# connection
-conn = psycopg2.connect(
-    dbname="your_database_name",
-    user="your_username",
-    password="your_password",
-    host="localhost",
-    port="5432"
-)
-# data location 
-with open("path_of_dataset, "r") as f:
-
-```
+  ​Before performing above code block, the connection details (Lines 7:13) 		and dataset location (Line 38) in load.py need to be modified. For example:
+  
+    ```python
+    # connection
+    conn = psycopg2.connect(
+        dbname="your_database_name",
+        user="your_username",
+        password="your_password",
+        host="localhost",
+        port="5432"
+    )
+    # data location 
+    with open("path_of_dataset, "r") as f:
+    
+  ```
 
 - **Data cleaning**
 
