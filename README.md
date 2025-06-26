@@ -8,13 +8,13 @@ The app allows real-time querying of historical trajectories and supports spatia
 
 ### Web Application Functions
 
-- Three query page:
+- Three query pages:
 
   1) Taxi Trajectories by Start Location and Time Range:
      This query retrieves all trajectories that originate from a specified area within a given time range. 
 
   2) High-Frequency Taxi Pick-up Locations: 
-     This query aggregates the spatial distribution of trip origins to identify the most frequent pick-up locations during a specified time interval. To avoid bias from fixed taxi stands, all trips originating from a designated taxi stand were excluded.
+     This query aggregates the spatial distribution of trip origins to identify the most frequent pick-up locations during a specified time interval. To avoid bias, all trips originating from a designated taxi stand were excluded.
 
   3) Taxi trajectories between two areas:
      The query retrieves a complete set of trajectories that simultaneously meet both the criteria for a specified start and end area within a certain time frame. 
@@ -40,7 +40,7 @@ The app allows real-time querying of historical trajectories and supports spatia
 - `psycopg2`: Used in the backend (Python) to establish a connection to the PostgreSQL database and execute SQL queries.
 - `Axios:`: To send queries to the backend API endpoints.
 - `leaflet`: To rendering map at frontend.
-- `bootstrap`: CSS Lib
+- `bootstrap`: CSS framework
 
 ---
 
